@@ -252,7 +252,7 @@
       <!-- Main area -->
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
-
+        {% if not config.extra.minimal %}
           <!-- Navigation -->
           {% block site_nav %}
 
@@ -292,6 +292,7 @@
               </div>
             {% endif %}
           {% endblock %}
+        {% endif %}
 
           <!-- Article -->
           <div class="md-content">
@@ -332,22 +333,24 @@
                   {% endif %}
                 {% endif %}
               {% endblock %}
-
+            {% if not config.extra.minimal %}
               <!-- Disqus integration -->
               {% block disqus %}
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
+            {% endif %}
             </article>
           </div>
         </div>
       </main>
-
+    {% if not config.extra.minimal %}
       <!-- Application footer -->
       {% block footer %}
         {% include "partials/footer.html" %}
       {% endblock %}
+    {% endif %}
     </div>
-
+  {% if not config.extra.minimal %}
     <!-- Theme-related JavaScript -->
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.js' | url }}"></script>
@@ -395,5 +398,6 @@
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
+  {% endif %}
   </body>
 </html>

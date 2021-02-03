@@ -106,11 +106,6 @@
       margin: px2rem(4px);
       padding: px2rem(8px);
 
-      // [tablet -]: Hide button
-      @include break-to-device(tablet) {
-        display: none;
-      }
-
       // Image or icon
       img,
       svg {
@@ -146,11 +141,7 @@
 
     // Button for drawer
     &[for="__drawer"] {
-
-      // [screen +]: Hide button
-      @include break-from-device(screen) {
-        display: none;
-      }
+      display: none;
     }
   }
 

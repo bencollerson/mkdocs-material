@@ -39,7 +39,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.cb6bc1d0.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.dd80f24e.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.39b8e14a.min.css' | url }}">
@@ -126,6 +126,7 @@
       {% endblock %}
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
+        {% if not config.extra.minimal %}
           {% block site_nav %}
             {% if nav %}
               {% if page and page.meta and page.meta.hide %}
@@ -152,6 +153,7 @@
               </div>
             {% endif %}
           {% endblock %}
+        {% endif %}
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               {% block content %}
@@ -172,17 +174,22 @@
                   {% endif %}
                 {% endif %}
               {% endblock %}
+            {% if not config.extra.minimal %}
               {% block disqus %}
                 {% include "partials/integrations/disqus.html" %}
               {% endblock %}
+            {% endif %}
             </article>
           </div>
         </div>
       </main>
+    {% if not config.extra.minimal %}
       {% block footer %}
         {% include "partials/footer.html" %}
       {% endblock %}
+    {% endif %}
     </div>
+  {% if not config.extra.minimal %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/vendor.18f0862e.min.js' | url }}"></script>
       <script src="{{ 'assets/javascripts/bundle.994580cf.min.js' | url }}"></script>
@@ -221,5 +228,6 @@
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
+  {% endif %}
   </body>
 </html>
