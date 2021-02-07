@@ -52,7 +52,12 @@
       <div class="md-header-nav__ellipsis">
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
-            {{ config.site_name }}
+	    <a
+	      href="{{ site_url }}"
+	      title="{{ config.site_name | e }}"
+	      >
+	      {{ config.site_name }}
+	    </a>
           </span>
         </div>
         <div class="md-header-nav__topic">
